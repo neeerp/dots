@@ -52,6 +52,9 @@ if (g:IsRoot() == 0)
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'ryanoasis/vim-devicons'
 
+    " Render .MD files
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+
 endif
 call plug#end()
 
@@ -64,6 +67,7 @@ if (g:IsRoot() == 0)
     call g:SourceLocal('plugins/undotree.vim')
     call g:SourceLocal('plugins/nerdtree.vim')
     call g:SourceLocal('plugins/coc/coc.vim')
+    call g:SourceLocal('plugins/markdown-preview.vim')
 endif
 
 call g:SourceLocal('plugins/quick-scope.vim')
