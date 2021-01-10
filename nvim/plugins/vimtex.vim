@@ -14,6 +14,11 @@ let g:vimtex_compiler_progname = 'nvr'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_CompileRule_pdf='pdflatex'
 
+augroup VimtexCompileClear
+    autocmd!
+    autocmd User VimtexEventCompileSuccess,VimtexEventCompileFailed silent exe '!latexmk -c'
+augroup END
+
 
 """""""""""""""""
 "    Viewer     "
