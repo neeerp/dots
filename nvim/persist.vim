@@ -18,6 +18,10 @@ set undofile
 autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview
 
+" Don't save anything other than folds and positions (otherwise init.vim updates
+" won't take effect unless the view is cleared for each file ever opened!)
+set viewoptions=cursor,folds
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NOTE: For the root user, you need to make sure that any associated directories
