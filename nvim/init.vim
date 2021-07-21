@@ -5,16 +5,6 @@ function! g:SourceLocal(relativePath)
     exec 'source ' . fullPath
 endfunction
 
-" Helper to check if the user is root
-function! g:IsRoot()
-    let eid = system('echo $EUID')
-    if eid == 0
-        return 1
-    else
-        return 0
-    endif
-endfunction 
-
 " Utilities and Helpers
 call g:SourceLocal('util/util.vim')
 
