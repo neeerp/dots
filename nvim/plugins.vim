@@ -4,25 +4,23 @@
 
 call plug#begin(stdpath('data') . '/plugged')
 
-
 " Themes
 Plug 'morhetz/gruvbox'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'rakr/vim-one'
 
 " Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" Modifying 'surround' objects
 Plug 'tpope/vim-surround'
-
-" Comments made reasonable
 Plug 'tpope/vim-commentary'
 
 
 " Search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
 
 " Git Side diffs
 Plug 'airblade/vim-gitgutter'
@@ -46,7 +44,6 @@ Plug 'cespare/vim-toml'
 Plug 'mboughaba/i3config.vim'
 Plug 'ericpruitt/tmux.vim', {'rtp': 'vim/'}
 
-
 " Heavier plugins; don't run as root
 if (g:IsRoot() == 0)
     """"""""""""""""""
@@ -60,7 +57,10 @@ if (g:IsRoot() == 0)
     Plug 'lervag/vimtex'
     
     " MASSIVE COC
-    Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+    " Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+
+    " Testing out native LSP
+    Plug 'neovim/nvim-lspconfig'
 
     """"""""""""""""""
     "  FS/Undo Tree  "
@@ -75,8 +75,15 @@ if (g:IsRoot() == 0)
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'ryanoasis/vim-devicons'
 
+    """"""""""""""""""
+    "    Testing     "
+    """"""""""""""""""
+    Plug 'vim-test/vim-test'
+
 endif
 call plug#end()
+
+
 
 
 """"""""""""""""""
@@ -86,10 +93,12 @@ call plug#end()
 if (g:IsRoot() == 0)
     call g:SourceLocal('plugins/undotree.vim')
     call g:SourceLocal('plugins/nerdtree.vim')
-    call g:SourceLocal('plugins/coc/coc.vim')
     call g:SourceLocal('plugins/markdown-preview.vim')
     call g:SourceLocal('plugins/vimtex.vim')
+    call g:SourceLocal('plugins/vim-test.vim')
 endif
+
+call g:SourceLocal('lua/lsp.lua')
 
 call g:SourceLocal('plugins/quick-scope.vim')
 call g:SourceLocal('plugins/vim-airline.vim')
