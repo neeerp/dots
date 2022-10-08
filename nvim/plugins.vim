@@ -17,7 +17,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 
-
 " Search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -32,17 +31,29 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 " Highlighting for 't' and 'f' motions
 Plug 'unblevable/quick-scope'
 
-
 """"""""""""""""""
 "Language Support"
 """"""""""""""""""
 
+" Elixir
+Plug 'elixir-editors/vim-elixir'
+
 " TOML Syntax
 Plug 'cespare/vim-toml'
+
+" Rust Syntax
+Plug 'rust-lang/rust.vim'
+
 
 " Config Syntax
 Plug 'mboughaba/i3config.vim'
 Plug 'ericpruitt/tmux.vim', {'rtp': 'vim/'}
+
+
+" Testing out native LSP
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'nvim-lua/completion-nvim'
+" Plug 'nvim-lua/lsp_extensions.nvim'
 
 " Heavier plugins; don't run as root
 if (g:IsRoot() == 0)
@@ -55,12 +66,11 @@ if (g:IsRoot() == 0)
 
     " Render LaTeX
     Plug 'lervag/vimtex'
-    
-    " MASSIVE COC
-    " Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 
-    " Testing out native LSP
-    Plug 'neovim/nvim-lspconfig'
+
+    Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+    " Plug 'simrat39/rust-tools.nvim'
+
 
     """"""""""""""""""
     "  FS/Undo Tree  "
@@ -91,6 +101,7 @@ call plug#end()
 """"""""""""""""""
 
 if (g:IsRoot() == 0)
+    call g:SourceLocal('plugins/coc/coc.vim')
     call g:SourceLocal('plugins/undotree.vim')
     call g:SourceLocal('plugins/nerdtree.vim')
     call g:SourceLocal('plugins/markdown-preview.vim')
@@ -98,10 +109,16 @@ if (g:IsRoot() == 0)
     call g:SourceLocal('plugins/vim-test.vim')
 endif
 
-call g:SourceLocal('lua/lsp.lua')
 
 call g:SourceLocal('plugins/quick-scope.vim')
 call g:SourceLocal('plugins/vim-airline.vim')
 call g:SourceLocal('plugins/vim-gitgutter.vim')
 call g:SourceLocal('plugins/indentLine.vim')
 call g:SourceLocal('plugins/fzf.vim')
+
+" " use <Tab> as trigger keys
+" imap <Tab> <Plug>(completion_smart_tab)
+" imap <S-Tab> <Plug>(completion_smart_s_tab)
+
+" " Enable type inlay hints
+" autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }

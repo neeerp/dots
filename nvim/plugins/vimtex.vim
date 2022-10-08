@@ -14,9 +14,21 @@ let g:vimtex_compiler_progname = 'nvr'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_CompileRule_pdf='pdflatex'
 
+
+let g:vimtex_compiler_latexmk = {
+    \ 'options' : [
+    \   '-pdf',
+    \   '-shell-escape',
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
+
 augroup VimtexCompileClear
     autocmd!
-    autocmd User VimtexEventCompileSuccess,VimtexEventCompileFailed silent exe '!latexmk -c'
+    autocmd User VimtexEventCompileSuccess silent exe '!latexmk -c'
 augroup END
 
 

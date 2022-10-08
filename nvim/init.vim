@@ -13,7 +13,7 @@ function! g:IsRoot()
     else
         return 0
     endif
-endfunction 
+endfunction
 
 " Utilities and Helpers
 call g:SourceLocal('util/util.vim')
@@ -28,10 +28,17 @@ call g:SourceLocal('common.vim')
 call g:SourceLocal('keys.vim')
 
 " Plugins
-call g:SourceLocal('plugins/plugins.vim')
+call g:SourceLocal('plugins.vim')
 
 " Theme
 call g:SourceLocal('themes/themes.vim')
+
+" call g:SourceLocal('lua/lsp.lua')
+" set completeopt=menuone,noinsert,noselect
+" let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+
+" Enable type inlay hints
+" autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }
 
 " Swap, Undo, and Views
 call g:SourceLocal('persist.vim')

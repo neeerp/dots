@@ -24,3 +24,12 @@ tnoremap <C-space>k <C-\><C-N>:wincmd k<CR>
 tnoremap <C-space>l <C-\><C-N>:wincmd l<CR>
 tnoremap <C-space>p <C-\><C-N>:wincmd p<CR>
 tnoremap <C-space><space> <C-\><C-N>
+
+
+
+"""""""""""""""""
+"     Popup     "
+"""""""""""""""""
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"

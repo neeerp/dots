@@ -98,5 +98,7 @@ set scrolloff=4 sidescrolloff=4
 set nowrap
 
 " Override Width for certain file types (e.g. config files)
-autocmd bufreadpre config setlocal textwidth=0 
+" autocmd bufreadpre config setlocal textwidth=0 
+" autocmd bufreadpre python setlocal textwidth=0 
+" autocmd bufreadpre py setlocal textwidth=0 
 
