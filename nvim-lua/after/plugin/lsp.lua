@@ -19,6 +19,26 @@ require'lspconfig'.lua_ls.setup {
   }
 }
 
+local prettier = {
+  formatCommand = 'prettierd "${INPUT}"',
+  formatStdin = true,
+  env = {
+    string.format('PRETTIERD_DEFAULT_CONFIG=%s', vim.fn.expand('~/.config/nvim/utils/linter-config/.prettierrc.json')),
+  },
+}
+
+require'lspconfig'.efm.setup {
+  init_options = {documentFormatting = true},
+  settings = {
+    rootMarkers = {".git/"},
+    languages = {
+      javascript = {
+        prettier
+      }
+    }
+  }
+}
+
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -42,6 +62,8 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
 	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set('n', '<C-e>', function() vim.diagnostic.open_float() end, opts)
+
+  lsp.buffer_autoformat()
 end)
 
 lsp.setup()
