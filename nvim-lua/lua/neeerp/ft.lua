@@ -1,7 +1,7 @@
-vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
   desc = 'Set tab width to 2 for these file types',
   pattern = {
-    '*.html', '*.json',
+    '*.css', '*.html', '*.json',
     '*.js', '*.mjs', '*.cjs', '*.jsx',
     '*.ts', '*.mts', '*.cts', '*.tsx',
     '*.lua',
@@ -12,4 +12,3 @@ vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
     vim.opt.shiftwidth = 2
   end
 })
-
