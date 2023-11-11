@@ -1,0 +1,3 @@
+[submodule "nvim-lua-dotfiles"]
+	path = nvim-lua-dotfiles
+	url = git@github.com:neeerp/nvim-lua-dotfiles.git
